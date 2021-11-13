@@ -45,8 +45,6 @@ const database = {
 
 app.get("/", (req, res) => {
 	res.send(database.users);
-	
-	
 });
 
 app.post("/signin", (req, res) => {
@@ -55,7 +53,7 @@ app.post("/signin", (req, res) => {
 		req.body.password === database.users[0].password
 	) {
 		res.json(database.users[0]);
-		console.log('sucess')
+		
 	} else {
 		res.status(400).json("error logging in");
 	}
@@ -91,8 +89,8 @@ app.get("/profile/:id", (req, res) => {
 		res.status(404).json("no such user");
 	}
 });
-app.post("/image", (req, res) => {
-	const { id } = req.body;
+app.put("/image", (req, res) => {
+	const id = req.body.id;
 	let found = false;
 	database.users.forEach((user) => {
 		if (user.id === id) {
