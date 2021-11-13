@@ -66,7 +66,7 @@ app.post("/register", (req, res) => {
 		console.log(hash);
 	});
 	database.users.push({
-		id: "125",
+		id: "127",
 		name: name,
 		email: email,
 		password: password,
