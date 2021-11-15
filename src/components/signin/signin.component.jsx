@@ -13,9 +13,11 @@ class SignIn extends React.Component{
     onEmailChange = (event) => {
         this.setState({signInEmail: event.target.value})
     }
+
     onPasswordChange = (event) => {
         this.setState({signInPassword: event.target.value})
     }
+
     onSubmitSignIn = () => {
         fetch('http://localhost:5000/signin', {
             method: 'post',
@@ -27,16 +29,17 @@ class SignIn extends React.Component{
         })
             .then(response => response.json())
             .then(user => {
-                console.log(user)
                 if (user.id) {
                     this.props.loadUser(user);
                     this.props.onRouteChange("home");
+                } else {
+                    alert("wrong credentials or user not exsist, please register!!");
                 }    
             })
         
     }
      render() {
-         const { onRouteChange } = this.props;
+        const { onRouteChange } = this.props;
         return (
             <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
                 <main className="pa4 black-80">
